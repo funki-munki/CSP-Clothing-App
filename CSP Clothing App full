@@ -1,0 +1,46 @@
+//Variables listed to define to categorize items
+var hotTops = (["T-shirt","tank top","light tee"]);
+var hotBottoms = (["basketball shorts","casual shorts","light jeans","leggings"]);
+var coldTops = (["sweater","overcoat","puffer jacket","puffer overcoat","sweatshirt","hoodie"]);
+var coldBottoms  = (["pajama pants","sweat pants","heavy jeans","snow pants"]);
+var hotShoes = (["flip flops","light sneakers"]);
+var coldShoes = (["sneakers","fur crocs","fur Uggs","boots"]);
+var colorArray = (["red","blue","orange","yellow","green","purple","indigo","violet","white","pink","brown","black","striped","checkered","plaid"]);
+var randomTops = (["T-shirt","tank top","light tee","sweater","overcoat","puffer jacket","puffer overcoat","sweatshirt","hoodie"]);
+var randomBottoms = (["basketball shorts","casual shorts","light jeans","leggings","pajama pants","sweat pants","heavy jeans","snow pants"]);
+var randomShoes = (["flip flops","light sneakers","sneakers","fur crocs","fur Uggs","boots"]);
+
+
+//Climate specific clothe generation, although still randomized in each list 
+onEvent("climateDropdown", "change", function( ) {
+  setProperty("climateDropdown", "text", "text");
+  var dropdownValue = getProperty("climateDropdown", "text");
+  setScreen("clothingScreen");
+ if (dropdownValue.text === "Hot") {
+      setText[("finalArticles", ("A " + colorArray[(Math.floor(Math.random() * colorArray.length))]) + " " + hotTops[(Math.floor(Math.random() * hotTops.length))] + ", a " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + hotBottoms[(Math.floor(Math.random() * hotBottoms.length))] + ", and " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + hotShoes[(Math.floor(Math.random() * hotShoes.length))] + "!")];
+      
+  } if (dropdownValue.text === "Warm")
+        setText[("finalArticles", ("A " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldTops[(Math.floor(Math.random() * coldTops.length))] + ", a " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldBottoms[(Math.floor(Math.random() * coldBottoms.length))] + ", and " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldShoes[(Math.floor(Math.random() * coldShoes.length))] + "!"))];
+   if (dropdownValue.text === "Cold") 
+        setText[("finalArticles", "A " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldTops[(Math.floor(Math.random() * coldTops.length))] + ", a " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldBottoms[(Math.floor(Math.random() * coldBottoms.length))] + ", and " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + coldShoes[(Math.floor(Math.random() * coldShoes.length))] + "!")];
+
+  }
+  
+);
+
+ 
+
+
+//Randomize clothing choics with click of the 
+//"Suprise me!" button
+//String generation loops 3 times
+onEvent("randomizeButton", "click", randomizeClothes);
+  function randomizeClothes() {
+   setScreen("clothingScreen");
+   for(var i=0; i<3; i++);
+  setText("finalArticles", "A " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + randomTops[(Math.floor(Math.random() * randomTops.length))] + ", " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + randomBottoms[(Math.floor(Math.random() * randomBottoms.length))] + ", and " + colorArray[(Math.floor(Math.random() * colorArray.length))] + " " + randomShoes[(Math.floor(Math.random() * randomShoes.length))] + "!"); 
+}
+onEvent("returnButton", "click", function( ) {
+ setScreen("homeScreen");
+   
+});
